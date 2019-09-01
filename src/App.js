@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {Nav} from 'react-bootstrap';
 import './App.css';
+import HomePage from './HomePage/HomePage';
+import TicTacToe from './TicTacToe/TicTacToe';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render(){
+    return (
+      <>
+      <Router>
+        <div className="container">
+          <Nav variant="tabs" defaultActiveKey="/home">
+            <Nav.Item>
+              <Link className="nav-link" to="/">Main page</Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link className="nav-link" to="/tictactoe">Tic Tac toe</Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link className="nav-link" to="/surprise">Surprise</Link>
+            </Nav.Item>
+        </Nav>
+        </div>
+        <div className="container">
+          <Route exact path="/" component={HomePage}/>
+          <Route path="/tictactoe" component={TicTacToe}/>
+        </div>
+      </Router>
+      
+      </>
+    );
+  }
 }
 
 export default App;
