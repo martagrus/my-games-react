@@ -19,7 +19,7 @@ class App extends React.Component {
               <Link className="nav-link" to="/tictactoe">Tic Tac toe</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/surprise">Surprise</Link>
+              <Link className="nav-link" to="/surprise" disabled>Surprise</Link>
             </Nav.Item>
         </Nav>
         </div>
