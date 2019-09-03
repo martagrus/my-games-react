@@ -18,42 +18,55 @@ class TicTacToe extends React.Component {
             ],
             gameEnabled: true
         }
-    }
+    };
 
     checkGameStatus(selectedPlayer) {
+
+        if (this.state.gameEnabled && this.state.turn > 7 && this.sameAcrossRight && this.sameAcrossLeft && this.sameVertical && this.sameHorizontal) {
+            this.endGame(false);
+          }      
+    }  
+
+    sameVertical = (selectedPlayer) => {
+        const {board} = this.state
         for (let i = 0; i <= 6; i = i + 3) {
-            if (!!this.state.board[i] && !!this.state.board[i+1] && !!this.state.board[i+2]) {
-                if (this.state.board[i] === this.state.board[i+1] && this.state.board[i+1] === this.state.board[i+2]) {
+            if (board[i] && board[i+1] && board[i+2]) {
+                if (board[i] === board[i+1] && board[i+1] === board[i+2]) {
                     this.endGame(selectedPlayer);
                 }
             }
           }
-      
+    }
+
+    sameHorizontal = (selectedPlayer) => {
+        const {board} = this.state
         for (let i = 0; i < 3; i++) {
-            if (!!this.state.board[i] && !!this.state.board[i+3] && !!this.state.board[i+6]) {
-                if (this.state.board[i] === this.state.board[i+3] && this.state.board[i+3] === this.state.board[i+6]) {
+            if (board[i] && board[i+3] && board[i+6]) {
+                if (board[i] === board[i+3] && board[i+3] === board[i+6]) {
                     this.endGame(selectedPlayer);
                 }
             }
         }
-    
-        if (!!this.state.board[0] && !!this.state.board[4] && !!this.state.board[8]) {
-            if (this.state.board[0] === this.state.board[4] && this.state.board[4] === this.state.board[8]) {
-                this.endGame(selectedPlayer);
-            }
-        }
-    
-        if (!!this.state.board[2] && !!this.state.board[4] && !!this.state.board[6]) {
-            if (this.state.board[2] === this.state.board[4] && this.state.board[4] === this.state.board[6]) {
-                this.endGame(selectedPlayer);
-            }
-        }
-
-        if (this.state.gameEnabled && this.state.turn > 7) {
-            this.endGame(false);
-          }      
-    }  
+    }
       
+    sameAcrossRight = (selectedPlayer) => {
+        const {board} = this.state
+        if (board[2] && board[4] && board[6]) {
+            if (board[2] === board[4] && board[4] === board[6]) {
+            this.endGame(selectedPlayer);
+            }
+        }
+    }
+
+    sameAcrossLeft = (selectedPlayer) => {
+        const {board} = this.state
+        if (board[0] && board[4] && board[8]) {
+            if (board[0] === board[4] && board[4] === board[8]) {
+                this.endGame(selectedPlayer);
+            }
+        }
+    }
+
     computerTurn() {
         let board = this.state.board;
     
@@ -139,7 +152,7 @@ class TicTacToe extends React.Component {
                     { this.state.board.map((field, key) => {
                         return (
                             <div className="game-board--field" key={key} onClick={this.onFieldClick.bind(this, key)}>
-                                <div className="game-board--field-content">{field === 'X' ? <img src={eks} alt="X" /> :  field === 'O' ?<img src={o} alt="O" /> : null}</div>
+                                <div className="game-board--field-content">{field === 'x' ? <img src={eks} alt="X" /> :  field === 'o' ?<img src={o} alt="O" /> : null}</div>
                                 
                             </div>
                         )
