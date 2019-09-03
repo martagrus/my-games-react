@@ -22,53 +22,58 @@ class TicTacToe extends React.Component {
 
     checkGameStatus(selectedPlayer) {
 
-        if (this.state.gameEnabled && this.state.turn > 7 && this.sameAcrossRight && this.sameAcrossLeft && this.sameVertical && this.sameHorizontal) {
-            this.endGame(false);
-          }      
+        if (this.state.gameEnabled) {
+            if (this.sameAcrossRight(selectedPlayer) || this.sameAcrossLeft(selectedPlayer) || this.sameVertical(selectedPlayer) || this.sameHorizontal(selectedPlayer)) {
+                this.endGame(selectedPlayer);
+                } else if (this.state.turn > 7) {
+                    this.endGame(false);
+                    }
+        }
+             
     }  
 
     sameVertical = (selectedPlayer) => {
-        const {board} = this.state
+        let {board} = this.state
         for (let i = 0; i <= 6; i = i + 3) {
             if (board[i] && board[i+1] && board[i+2]) {
                 if (board[i] === board[i+1] && board[i+1] === board[i+2]) {
-                    this.endGame(selectedPlayer);
+                    return selectedPlayer;
                 }
             }
-          }
+        }
     }
 
     sameHorizontal = (selectedPlayer) => {
-        const {board} = this.state
+        let {board} = this.state
         for (let i = 0; i < 3; i++) {
             if (board[i] && board[i+3] && board[i+6]) {
                 if (board[i] === board[i+3] && board[i+3] === board[i+6]) {
-                    this.endGame(selectedPlayer);
+                    return selectedPlayer;
                 }
             }
         }
     }
       
     sameAcrossRight = (selectedPlayer) => {
-        const {board} = this.state
+        let {board} = this.state
         if (board[2] && board[4] && board[6]) {
             if (board[2] === board[4] && board[4] === board[6]) {
-            this.endGame(selectedPlayer);
+                return selectedPlayer;
             }
         }
     }
 
     sameAcrossLeft = (selectedPlayer) => {
-        const {board} = this.state
+        let {board} = this.state
         if (board[0] && board[4] && board[8]) {
             if (board[0] === board[4] && board[4] === board[8]) {
-                this.endGame(selectedPlayer);
+                return selectedPlayer;
             }
         }
     }
 
     computerTurn() {
-        let board = this.state.board;
+        let {board} = this.state
     
         function _getRandomInt() {
           let min = Math.ceil(0);
