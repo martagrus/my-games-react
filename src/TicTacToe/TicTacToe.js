@@ -61,13 +61,13 @@ class TicTacToe extends React.Component {
           let min = Math.ceil(0);
           let max = Math.floor(8);
     
-          return Math.floor(Math.random() * (max - min -1)) + min;
+          return Math.floor(Math.random() * (max - min + 1)) + min;
         }
     
         let computerFieldSelected = _getRandomInt();
     
         if (board[computerFieldSelected] === '') {
-          board[computerFieldSelected] = <img src={o} alt="O" />
+          board[computerFieldSelected] = 'x'
         } else if (this.state.gameEnabled && this.state.board.indexOf('') >= 0) {
           this.computerTurn();
           return;
@@ -78,7 +78,7 @@ class TicTacToe extends React.Component {
           board
         })
     
-        this.checkGameStatus('o');
+        this.checkGameStatus('x');
     }    
 
     onFieldClick(index) {
@@ -86,16 +86,14 @@ class TicTacToe extends React.Component {
         if (this.state.board[index] !== '') { alert('This one is taken!'); return };
     
         let board = this.state.board;
-        board[index] = <img src={eks} alt="X" />;
+        board[index] = 'o';
     
         this.setState({
-          turn: this.state.turn + 1,
-          board
-        })
+            turn: this.state.turn + 1,
+            board
+            }, this.computerTurn)
     
-        this.checkGameStatus('x');
-    
-        this.computerTurn();
+        this.checkGameStatus('o');
     }
     
     resetGameBoard() {
@@ -141,7 +139,8 @@ class TicTacToe extends React.Component {
                     { this.state.board.map((field, key) => {
                         return (
                             <div className="game-board--field" key={key} onClick={this.onFieldClick.bind(this, key)}>
-                                <div className="game-board--field-content">{field}</div>
+                                <div className="game-board--field-content">{field === 'X' ? <img src={eks} alt="X" /> :  field === 'O' ?<img src={o} alt="O" /> : null}</div>
+                                
                             </div>
                         )
                     }) }
