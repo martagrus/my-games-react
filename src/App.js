@@ -4,6 +4,7 @@ import {Nav} from 'react-bootstrap';
 import './App.css';
 import HomePage from './HomePage/HomePage';
 import TicTacToe from './TicTacToe/TicTacToe';
+import PaddleGame from './PaddleGame/PaddleGame';
 
 class App extends React.Component {
   render(){
@@ -19,13 +20,14 @@ class App extends React.Component {
               <Link className="nav-link" to="/tictactoe">Tic Tac toe</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/surprise" disabled>Surprise</Link>
+              <Link className="nav-link" to="/paddle">Paddle Game</Link>
             </Nav.Item>
         </Nav>
         </div>
         <div className="container">
           <Route exact path="/" component={HomePage}/>
           <Route path="/tictactoe" component={TicTacToe}/>
+          <Route path="/paddle" component={PaddleGame}/>
         </div>
       </Router>
       
