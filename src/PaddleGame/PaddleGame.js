@@ -73,7 +73,7 @@ class PaddleGame extends React.Component {
 
   setHighScore() {
     let highScore = localStorage.getItem("highScore");
-
+    
     if (highScore < this.state.bounces) {
       localStorage.setItem("highScore", this.state.bounces);
     }
@@ -116,6 +116,10 @@ class PaddleGame extends React.Component {
             <h1>Your Score: <span>{this.state.bounces}</span></h1>
             <h2>Highest Score: <span>{localStorage.getItem("highScore")}</span></h2>
         </div>
+        <div className='manual'>
+        <h5>How to play:</h5>
+        <h6>Use your mouse to hover over the board and control the paddle with it. To set to highest score: bounce the ball to beat to latest score.</h6>
+      </div>
       </div>
     );
   } 

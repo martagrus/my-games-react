@@ -1,7 +1,16 @@
 .board {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     margin: 5%;
+}
+
+.flex>div:last-child {
+    flex: 0 1 100%;
+}
+
+.manual {
+    margin-top: 5%;
 }
 
 .scoreBoard {
