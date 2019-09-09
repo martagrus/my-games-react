@@ -2,14 +2,13 @@ import React from 'react';
 import './TicTacToe.css';
 import eks from './x.jpg';
 import o from './o.jpg';
+import language from '../language.json';
 
 class TicTacToe extends React.Component {
     constructor() {
         super();
-
+    
         this.state = {
-            player1: 'o',
-            player2: 'x',
             turn: 0,
             board: [
                 '', '', '',
@@ -25,49 +24,48 @@ class TicTacToe extends React.Component {
         if (this.state.gameEnabled) {
             if (this.sameAcrossRight(selectedPlayer) || this.sameAcrossLeft(selectedPlayer) || this.sameVertical(selectedPlayer) || this.sameHorizontal(selectedPlayer)) {
                 this.endGame(selectedPlayer);
-                } else if (this.state.turn > 7) {
-                    this.endGame(false);
-                    }
-        }
-             
+            } else if (this.state.turn > 7) {
+                this.endGame(false);
+                }
+        }      
     }  
 
-    sameVertical = (selectedPlayer) => {
+    sameVertical = () => {
         let {board} = this.state
         for (let i = 0; i <= 6; i = i + 3) {
             if (board[i] && board[i+1] && board[i+2]) {
                 if (board[i] === board[i+1] && board[i+1] === board[i+2]) {
-                    return selectedPlayer;
+                    return true;
                 }
             }
         }
     }
 
-    sameHorizontal = (selectedPlayer) => {
+    sameHorizontal = () => {
         let {board} = this.state
         for (let i = 0; i < 3; i++) {
             if (board[i] && board[i+3] && board[i+6]) {
                 if (board[i] === board[i+3] && board[i+3] === board[i+6]) {
-                    return selectedPlayer;
+                    return true;
                 }
             }
         }
     }
       
-    sameAcrossRight = (selectedPlayer) => {
+    sameAcrossRight = () => {
         let {board} = this.state
         if (board[2] && board[4] && board[6]) {
             if (board[2] === board[4] && board[4] === board[6]) {
-                return selectedPlayer;
+                return true;
             }
         }
     }
 
-    sameAcrossLeft = (selectedPlayer) => {
+    sameAcrossLeft = () => {
         let {board} = this.state
         if (board[0] && board[4] && board[8]) {
             if (board[0] === board[4] && board[4] === board[8]) {
-                return selectedPlayer;
+                return true;
             }
         }
     }
@@ -103,7 +101,7 @@ class TicTacToe extends React.Component {
         if (!this.state.gameEnabled) { return };
         if (this.state.board[index] !== '') { alert('This one is taken!'); return };
     
-        let board = this.state.board;
+        let {board} = this.state;
         board[index] = 'o';
     
         this.setState({

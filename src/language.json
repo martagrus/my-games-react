@@ -1,0 +1,29 @@
+{
+    "en": {
+        "main": "Main Page",
+        "tictactoe": "Tic Tac Toe",
+        "paddle": "Paddle game",
+        "settings": "Settings",
+        "title": "Do you want to play a game?",
+        "rstBtn": "Reset Game",
+        "yourScore": "Your Score",
+        "hghScore": "Highest Score",
+        "how": "How to play:",
+        "manual": "Use your mouse to hover over the board and control the paddle with it. To set to highest score: bounce the ball to beat to latest score.",
+        "lang": "Choose your language:"
+    },
+
+    "pl": {
+        "main": "Strona Główna",
+        "tictactoe": "Kółko i Krzyżyk",
+        "paddle": "Gra Paddle",
+        "settings": "Ustawienia",
+        "title": "Chcesz zagrać w grę?",
+        "rstBtn": "Zresetuj grę",
+        "yourScore": "Twój Wynik",
+        "hghScore": "Najlepszy Wynik",
+        "how": "Jak grać:",
+        "manual": "Użyj myszki nad tablicą gry aby kontrolować podstawką. Aby ustanowić najlepszy wynik: odbijaj piłkę, aby pobić poprzedni wynik",
+        "lang": "Wybierz język:"
+    }
+}

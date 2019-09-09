@@ -1,5 +1,6 @@
 import React from 'react';
 import './PaddleGame.css';
+import language from '../language.json';
 
 class PaddleGame extends React.Component {
   constructor() {
@@ -76,20 +77,22 @@ class PaddleGame extends React.Component {
     
     if (highScore < this.state.bounces) {
       localStorage.setItem("highScore", this.state.bounces);
+      this.setState({highScore})
     }
   }
 
   printElements() {
-    this.game.context.fillStyle = 'black';
-    this.game.context.fillRect(0,0, this.game.gameBoard.width, this.game.gameBoard.height)
+    let {context} = this.game
+    context.fillStyle = 'black';
+    context.fillRect(0,0, this.game.gameBoard.width, this.game.gameBoard.height)
   
-    this.game.context.fillStyle = 'pink';
-    this.game.context.fillRect(this.game.paddleX, this.game.gameBoard.height - this.game.paddleDistFromEdge - this.game.paddleHeight, this.game.paddleWidth, this.game.paddleHeight)
+    context.fillStyle = 'pink';
+    context.fillRect(this.game.paddleX, this.game.gameBoard.height - this.game.paddleDistFromEdge - this.game.paddleHeight, this.game.paddleWidth, this.game.paddleHeight)
   
-    this.game.context.fillStyle = 'pink';
-    this.game.context.beginPath();
-    this.game.context.arc(this.game.ballX, this.game.ballY, 10, 0, Math.PI * 2, true);
-    this.game.context.fill();
+    context.fillStyle = 'pink';
+    context.beginPath();
+    context.arc(this.game.ballX, this.game.ballY, 10, 0, Math.PI * 2, true);
+    context.fill();
   }
   
   updateAll() {
