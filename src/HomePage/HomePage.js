@@ -11,9 +11,11 @@ class HomePage extends React.Component {
     
 
   render(){
+    console.log(language)
+    console.log(localStorage.getItem('language'))
     return (
       <p>
-      {/* {language[localStorage.getItem('language')].title} */}
+      {language[localStorage.getItem('language')].title}
       </p>
     );
   }

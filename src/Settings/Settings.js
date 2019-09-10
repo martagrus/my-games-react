@@ -11,7 +11,7 @@ class Settings extends React.Component {
 render(){
     return (
         <div className="langs">
-            <h5>Choose your language:</h5>
+            <h5>{language[localStorage.getItem('language')].lang}</h5>
             <button className="btn btn-danger" onClick={this.setLang.bind(this, 'pl')}>PL</button>
             <button className="btn btn-danger" onClick={this.setLang.bind(this, 'en')}>EN</button>
         </div>

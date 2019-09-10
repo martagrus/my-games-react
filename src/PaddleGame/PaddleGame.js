@@ -28,6 +28,10 @@ class PaddleGame extends React.Component {
     this.updateMousePosition = this.updateMousePosition.bind(this);
   }
 
+  setLang(language) {
+    localStorage.setItem('language', language);
+  }
+
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;
     this.game.context = this.refs.canvas.getContext('2d');
@@ -116,12 +120,12 @@ class PaddleGame extends React.Component {
       <div className='board'>
         <canvas ref="canvas" width="700" height="500"></canvas>
         <div className='scoreBoard'>
-            <h1>Your Score: <span>{this.state.bounces}</span></h1>
-            <h2>Highest Score: <span>{localStorage.getItem("highScore")}</span></h2>
+            <h1>{language[localStorage.getItem('language')].yourScore} <span>{this.state.bounces}</span></h1>
+            <h2>{language[localStorage.getItem('language')].hghScore} <span>{localStorage.getItem("highScore")}</span></h2>
         </div>
         <div className='manual'>
-        <h5>How to play:</h5>
-        <h6>Use your mouse to hover over the board and control the paddle with it. To set to highest score: bounce the ball to beat to latest score.</h6>
+        <h5>{language[localStorage.getItem('language')].how}</h5>
+        <h6>{language[localStorage.getItem('language')].manual}</h6>
       </div>
       </div>
     );

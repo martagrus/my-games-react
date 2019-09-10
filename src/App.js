@@ -17,6 +17,10 @@ class App extends React.Component {
     }
   }
 
+  setLang(language) {
+    localStorage.setItem('language', language);
+  }
+
   render(){
     return (
       <>
@@ -24,16 +28,16 @@ class App extends React.Component {
         <div className="container">
           <Nav variant="tabs" defaultActiveKey="/home">
             <Nav.Item>
-              <Link className="nav-link" to="/">Main page</Link>
+              <Link className="nav-link" to="/">{language[localStorage.getItem('language')].main}</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/tictactoe">Tic Tac toe</Link>
+              <Link className="nav-link" to="/tictactoe">{language[localStorage.getItem('language')].tictactoe}</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/paddle">Paddle Game</Link>
+              <Link className="nav-link" to="/paddle">{language[localStorage.getItem('language')].paddle}</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className="nav-link" to="/settings">Settings</Link>
+              <Link className="nav-link" to="/settings">{language[localStorage.getItem('language')].settings}</Link>
             </Nav.Item>
         </Nav>
         </div>

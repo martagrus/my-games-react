@@ -6,8 +6,8 @@
         "settings": "Settings",
         "title": "Do you want to play a game?",
         "rstBtn": "Reset Game",
-        "yourScore": "Your Score",
-        "hghScore": "Highest Score",
+        "yourScore": "Your score: ",
+        "hghScore": "Highest score: ",
         "how": "How to play:",
         "manual": "Use your mouse to hover over the board and control the paddle with it. To set to highest score: bounce the ball to beat to latest score.",
         "lang": "Choose your language:"
@@ -20,8 +20,8 @@
         "settings": "Ustawienia",
         "title": "Chcesz zagrać w grę?",
         "rstBtn": "Zresetuj grę",
-        "yourScore": "Twój Wynik",
-        "hghScore": "Najlepszy Wynik",
+        "yourScore": "Twój wynik:",
+        "hghScore": "Najlepszy wynik:",
         "how": "Jak grać:",
         "manual": "Użyj myszki nad tablicą gry aby kontrolować podstawką. Aby ustanowić najlepszy wynik: odbijaj piłkę, aby pobić poprzedni wynik",
         "lang": "Wybierz język:"

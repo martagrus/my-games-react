@@ -19,6 +19,10 @@ class TicTacToe extends React.Component {
         }
     };
 
+    setLang(language) {
+        localStorage.setItem('language', language);
+    }
+
     checkGameStatus(selectedPlayer) {
 
         if (this.state.gameEnabled) {
@@ -161,7 +165,7 @@ class TicTacToe extends React.Component {
                         )
                     }) }
                 </div>
-                <button onClick={this.resetGameBoard.bind(this)} className="btn btn-danger">Reset Game</button>
+                <button onClick={this.resetGameBoard.bind(this)} className="btn btn-danger">{language[localStorage.getItem('language')].rstBtn}</button>
             </div>
         );
     }
