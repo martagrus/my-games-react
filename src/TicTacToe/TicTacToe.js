@@ -19,10 +19,6 @@ class TicTacToe extends React.Component {
         }
     };
 
-    setLang(language) {
-        localStorage.setItem('language', language);
-    }
-
     checkGameStatus(selectedPlayer) {
 
         if (this.state.gameEnabled) {

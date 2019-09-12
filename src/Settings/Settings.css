@@ -1,0 +1,27 @@
+.speed {
+    margin-top: 3%;
+}
+
+input{ 
+    background: black;
+    width: 100%;
+ }
+
+ .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    background: pink;
+    
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    border: 1px solid black;
+    background: #505050;
+    cursor: pointer;
+  }

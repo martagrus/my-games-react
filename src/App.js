@@ -7,15 +7,27 @@ import TicTacToe from './TicTacToe/TicTacToe';
 import PaddleGame from './PaddleGame/PaddleGame';
 import Settings from './Settings/Settings';
 import language from './language.json';
+import { EventEmitter } from './EventEmitter';
 
 class App extends React.Component {
   constructor() {
     super();
 
+    this.state = {
+      appRefreshed: null
+    }
+
     if (!localStorage.getItem('language')) {
       localStorage.setItem('language', 'en');
     }
+
+    EventEmitter.subscribe('languageChange', (event) => {
+      this.setState({
+        appRefreshed: new Date()
+      })
+    })
   }
+
 
   setLang(language) {
     localStorage.setItem('language', language);

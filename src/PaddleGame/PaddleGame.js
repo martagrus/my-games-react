@@ -21,15 +21,12 @@ class PaddleGame extends React.Component {
 
     this.state = {
       gameRefreshInterval: null,
-      bounces: 0
+      bounces: 0,
+      isFullScreen: false
     }
 
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
-  }
-
-  setLang(language) {
-    localStorage.setItem('language', language);
   }
 
   componentDidMount() {
@@ -115,18 +112,38 @@ class PaddleGame extends React.Component {
     this.game.ballY = this.game.gameBoard.height / 4;
   }
 
+  setCanvasSize() {
+    if(this.state.isFullScreen){
+      return 'gameBoard gameBoard--full-screen'
+    } else {
+      return 'gameBoard'
+    }
+  }
+
+  toggleFullScreen() {
+    this.setState({
+      isFullScreen: !this.state.isFullScreen
+    })
+  }
+
   render() {
     return (
-      <div className='board'>
-        <canvas ref="canvas" width="700" height="500"></canvas>
-        <div className='scoreBoard'>
+      <div>
+        <div className='buttonsBoard'>
+          <button className="btn btn-danger">1</button>
+          <button className="btn btn-danger">2</button>
+        </div>
+        <div className='board'>
+          <canvas onDoubleClick={this.toggleFullScreen.bind(this)} className={this.setCanvasSize()} ref="canvas" width="700" height="500"></canvas>
+          <div className='scoreBoard'>
             <h1>{language[localStorage.getItem('language')].yourScore} <span>{this.state.bounces}</span></h1>
             <h2>{language[localStorage.getItem('language')].hghScore} <span>{localStorage.getItem("highScore")}</span></h2>
+          </div>
+          <div className='manual'>
+            <h5>{language[localStorage.getItem('language')].how}</h5>
+            <h6>{language[localStorage.getItem('language')].manual}</h6>
+          </div>
         </div>
-        <div className='manual'>
-        <h5>{language[localStorage.getItem('language')].how}</h5>
-        <h6>{language[localStorage.getItem('language')].manual}</h6>
-      </div>
       </div>
     );
   } 
