@@ -99,7 +99,7 @@ class TicTacToe extends React.Component {
     }    
 
     onFieldClick(index) {
-        if (!this.state.gameEnabled) { return };
+        // if (!this.state.gameEnabled) { return };
         // if (this.state.board[index] !== '') { alert('This one is taken!'); return };
         
     
@@ -112,7 +112,8 @@ class TicTacToe extends React.Component {
             this.info = <h1>There is no winner</h1>
         }
 
-        if (this.state.board[index] !== '') { 
+        if (!this.state.gameEnabled) { return }
+            else if (this.state.board[index] !== '') { 
             this.info = <h1>This one is taken!</h1>; 
         }
 
@@ -162,7 +163,7 @@ class TicTacToe extends React.Component {
     }    
 
     render(){
-        let info;
+        // let this.state.info;
 
         // if (this.checkGameStatus(this.selectedPlayer)) {
         //     info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
@@ -177,7 +178,7 @@ class TicTacToe extends React.Component {
         return (
             <div className="game-container background-ttt">
 
-                {info}
+                {this.state.info}
 
                 <div className="game-board">
                     { this.state.board.map((field, key) => {
