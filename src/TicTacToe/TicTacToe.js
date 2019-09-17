@@ -103,24 +103,26 @@ class TicTacToe extends React.Component {
         // if (this.state.board[index] !== '') { alert('This one is taken!'); return };
         
     
-        let {board} = this.state;
+        let {board, turn, gameEnabled} = this.state;
         board[index] = 'o';
+
+        let info;
     
-        if (this.checkGameStatus(this.selectedPlayer)) {
-            this.info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
-        } else {
-            this.info = <h1>There is no winner</h1>
+        if (!gameEnabled) { return }
+            else if (board[index] !== '') { 
+            info = <h1>This one is taken!</h1>; 
         }
 
-        if (!this.state.gameEnabled) { return }
-            else if (this.state.board[index] !== '') { 
-            this.info = <h1>This one is taken!</h1>; 
+        if (this.checkGameStatus(this.selectedPlayer)) {
+            info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
+        } else {
+            info = <h1>There is no winner</h1>
         }
 
         this.setState({
-            info: this.info,
-            turn: this.state.turn + 1,
+            turn: turn + 1,
             board,
+            info,
             }, this.computerTurn)
     
         this.checkGameStatus('o');
