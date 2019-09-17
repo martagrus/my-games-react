@@ -1,7 +1,7 @@
 import React from 'react';
 import './TicTacToe.css';
-import eks from './x.jpg';
-import o from './o.jpg';
+import eks from '../pictures/x.jpg';
+import o from '../pictures/o.jpg';
 import language from '../language.json';
 
 class TicTacToe extends React.Component {
@@ -100,6 +100,7 @@ class TicTacToe extends React.Component {
     onFieldClick(index) {
         if (!this.state.gameEnabled) { return };
         if (this.state.board[index] !== '') { alert('This one is taken!'); return };
+        
     
         let {board} = this.state;
         board[index] = 'o';
@@ -111,7 +112,8 @@ class TicTacToe extends React.Component {
     
         this.checkGameStatus('o');
     }
-    
+
+
     resetGameBoard() {
         this.setState({
             board: [
@@ -149,19 +151,33 @@ class TicTacToe extends React.Component {
     }    
 
     render(){
+        // let info;
+
+        // if (this.selectedPlayer) {
+        //     info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
+        // } else {
+        //     info = <h1>There is no winner</h1>
+        // }
+
+        // if (this.state.board[this.index] !== '') { 
+        //     info = <h1>This one is taken!</h1>; 
+        //     return }
+
         return (
-            <div className="game-container">
+            <div className="game-container background-ttt">
+
+                {/* {info} */}
+
                 <div className="game-board">
                     { this.state.board.map((field, key) => {
                         return (
                             <div className="game-board--field" key={key} onClick={this.onFieldClick.bind(this, key)}>
                                 <div className="game-board--field-content">{field === 'x' ? <img src={eks} alt="X" /> :  field === 'o' ?<img src={o} alt="O" /> : null}</div>
-                                
                             </div>
                         )
                     }) }
                 </div>
-                <button onClick={this.resetGameBoard.bind(this)} className="btn btn-danger">{language[localStorage.getItem('language')].rstBtn}</button>
+                <button onClick={this.resetGameBoard.bind(this)} className="btn">{language[localStorage.getItem('language')].rstBtn}</button>
             </div>
         );
     }

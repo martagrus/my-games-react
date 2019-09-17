@@ -1,27 +1,29 @@
-.speed {
-    margin-top: 3%;
+.background-s {
+  background-image: url('../pictures/lv.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }
 
-input{ 
-    background: black;
-    width: 100%;
- }
+.btn-s {
+  margin-right: 1%;
+  width: 7%;
+}
 
- .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 15px;
-    background: pink;
-    
-  }
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%; 
-    border: 1px solid black;
-    background: #505050;
-    cursor: pointer;
-  }
+.langs {
+  color: gold;
+  margin-left: 3%;
+  padding-top: 1%;
+}
+
+.speed {
+  margin-top: 3%;
+  margin-left: 3%;
+  color: gold;
+}
+
+.radioBtn {
+  margin-right: 1%;
+}
+
+

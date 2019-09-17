@@ -7,6 +7,7 @@ class PaddleGame extends React.Component {
     super();
 
     this.game = {
+      gameSpeed: 1000,
       gameBoard: null,
       context: null,
       ballX: 100,
@@ -22,7 +23,17 @@ class PaddleGame extends React.Component {
     this.state = {
       gameRefreshInterval: null,
       bounces: 0,
+      highScore: null,
       isFullScreen: false
+    }
+
+    //nie dziala
+    if (localStorage.getItem('highScore') > 10 && localStorage.getItem('highScore') < 20) {
+      this.game.gameSpeed = 500
+    }
+
+    if (localStorage.getItem('highScore') > 20) {
+      this.game.gameSpeed = 250
     }
 
     this.updateAll = this.updateAll.bind(this);
@@ -32,7 +43,7 @@ class PaddleGame extends React.Component {
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;
     this.game.context = this.refs.canvas.getContext('2d');
-    this.setState({gameRefreshInterval: setInterval(this.updateAll, 1000/30)});
+    this.printElements();
     this.refs.canvas.addEventListener('mousemove', this.updateMousePosition)
   }
 
@@ -71,7 +82,7 @@ class PaddleGame extends React.Component {
           this.setState({bounces: this.state.bounces + 1})
           this.setHighScore();
         }
-  }
+    }
 
   setHighScore() {
     let highScore = localStorage.getItem("highScore");
@@ -87,16 +98,17 @@ class PaddleGame extends React.Component {
     context.fillStyle = 'black';
     context.fillRect(0,0, this.game.gameBoard.width, this.game.gameBoard.height)
   
-    context.fillStyle = 'pink';
+    context.fillStyle = 'magenta';
     context.fillRect(this.game.paddleX, this.game.gameBoard.height - this.game.paddleDistFromEdge - this.game.paddleHeight, this.game.paddleWidth, this.game.paddleHeight)
   
-    context.fillStyle = 'pink';
+    context.fillStyle = 'gold';
     context.beginPath();
     context.arc(this.game.ballX, this.game.ballY, 10, 0, Math.PI * 2, true);
     context.fill();
   }
   
   updateAll() {
+    this.game.gameSpeed = this.game.gameSpeed - 1;
     this.printElements();
     this.updateDirection();
   }
@@ -126,19 +138,46 @@ class PaddleGame extends React.Component {
     })
   }
 
+  resetScore() {
+    localStorage.setItem('highScore', '0');
+    this.setState({bounces: 0})
+  }
+
+  //nie dziala
+  startStopGame() {
+    if (!this.state.gameRefreshInterval) {
+      this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
+    } else {
+      clearInterval(this.state.gameRefreshInterval);
+      this.setState({gameRefreshInterval: null})
+    }
+  }
+
   render() {
+    let startStopGameBtn;
+
+    if (!this.state.gameRefreshInterval) {
+      startStopGameBtn = <button className="btn btn-pg" onClick={this.startStopGame.bind(this)}>Start</button>
+    } else {
+      startStopGameBtn = <button className="btn btn-pg" onClick={this.startStopGame.bind(this)}>Stop</button>
+    }
+
+
     return (
-      <div>
-        <div className='buttonsBoard'>
-          <button className="btn btn-danger">1</button>
-          <button className="btn btn-danger">2</button>
-        </div>
+      <div className='background-pg'>
         <div className='board'>
-          <canvas onDoubleClick={this.toggleFullScreen.bind(this)} className={this.setCanvasSize()} ref="canvas" width="700" height="500"></canvas>
-          <div className='scoreBoard'>
-            <h1>{language[localStorage.getItem('language')].yourScore} <span>{this.state.bounces}</span></h1>
+        <div className='scoreBoard'>
+            <h2>{language[localStorage.getItem('language')].yourScore} <span>{this.state.bounces}</span></h2>
             <h2>{language[localStorage.getItem('language')].hghScore} <span>{localStorage.getItem("highScore")}</span></h2>
           </div>
+          <div className='buttonsBoard'>
+            <button className="btn btn-pg" onClick={this.resetScore.bind(this)}>{language[localStorage.getItem('language')].resetPg}</button>
+
+            {startStopGameBtn}
+            
+            <button className="btn btn-pg" onClick={this.toggleFullScreen.bind(this)}>{language[localStorage.getItem('language')].fullScr}</button>
+          </div>
+          <canvas onDoubleClick={this.toggleFullScreen.bind(this)} className={this.setCanvasSize()} ref="canvas" width="700" height="500"></canvas>
           <div className='manual'>
             <h5>{language[localStorage.getItem('language')].how}</h5>
             <h6>{language[localStorage.getItem('language')].manual}</h6>

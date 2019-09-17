@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import {Nav} from 'react-bootstrap';
 import './App.css';
 import HomePage from './HomePage/HomePage';
 import TicTacToe from './TicTacToe/TicTacToe';
@@ -17,7 +16,15 @@ class App extends React.Component {
       appRefreshed: null
     }
 
-    if (!localStorage.getItem('language')) {
+    let langs =[
+      'en',
+      'pl',
+      'de'
+    ]
+
+    if (!localStorage.getItem('language') 
+    || typeof localStorage.getItem('language') !== 'string'
+    || langs.indexOf(localStorage.getItem('language')) < 0) {
       localStorage.setItem('language', 'en');
     }
 
@@ -28,7 +35,6 @@ class App extends React.Component {
     })
   }
 
-
   setLang(language) {
     localStorage.setItem('language', language);
   }
@@ -37,27 +43,19 @@ class App extends React.Component {
     return (
       <>
       <Router>
-        <div className="container">
-          <Nav variant="tabs" defaultActiveKey="/home">
-            <Nav.Item>
-              <Link className="nav-link" to="/">{language[localStorage.getItem('language')].main}</Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link className="nav-link" to="/tictactoe">{language[localStorage.getItem('language')].tictactoe}</Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link className="nav-link" to="/paddle">{language[localStorage.getItem('language')].paddle}</Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Link className="nav-link" to="/settings">{language[localStorage.getItem('language')].settings}</Link>
-            </Nav.Item>
-        </Nav>
-        </div>
-        <div className="container">
-          <Route exact path="/" component={HomePage}/>
-          <Route path="/tictactoe" component={TicTacToe}/>
-          <Route path="/paddle" component={PaddleGame}/>
-          <Route path="/settings" component={Settings}/>
+        <div>
+          <nav className='nav'>
+            <Link className='nav-item' to="/">{language[localStorage.getItem('language')].main}</Link>
+            <Link className='nav-item' to="/tictactoe">{language[localStorage.getItem('language')].tictactoe}</Link>
+            <Link className='nav-item' to="/paddle">{language[localStorage.getItem('language')].paddle}</Link>
+            <Link className='nav-item' to="/settings">{language[localStorage.getItem('language')].settings}</Link>
+          </nav>
+          <div>
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/tictactoe" component={TicTacToe}/>
+            <Route path="/paddle" component={PaddleGame}/>
+            <Route path="/settings" component={Settings}/>
+          </div>
         </div>
       </Router>
       

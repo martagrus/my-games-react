@@ -8,10 +8,15 @@
         "rstBtn": "Reset Game",
         "yourScore": "Your score: ",
         "hghScore": "Highest score: ",
+        "resetPg": "Reset Game",
+        "fullScr": "Full Screen",
         "how": "How to play:",
         "manual": "Use your mouse to hover over the board and control the paddle with it. To set to highest score: bounce the ball to beat to latest score.",
         "lang": "Choose your language:",
-        "speed": "Choose your speed:"
+        "speed": "Choose your speed:",
+        "easySpeed": "Easy peasy",
+        "mediumSpeed": "A bit harder",
+        "fastSpeed": "Crazy"
     },
 
     "pl": {
@@ -23,9 +28,34 @@
         "rstBtn": "Zresetuj grę",
         "yourScore": "Twój wynik:",
         "hghScore": "Najlepszy wynik:",
+        "resetPg": "Zresetuj grę",
+        "fullScr": "Pełny ekran",
         "how": "Jak grać:",
         "manual": "Użyj myszki nad tablicą gry aby kontrolować podstawką. Aby ustanowić najlepszy wynik: odbijaj piłkę, aby pobić poprzedni wynik",
         "lang": "Wybierz język:",
-        "speed": "Wybierz prędkość:"
+        "speed": "Wybierz prędkość:",
+        "easySpeed": "Łatwizna",
+        "mediumSpeed": "Troche ciężej",
+        "fastSpeed": "Czyste szaleństwo"
+    },
+
+    "de": {
+        "main": "Hauptseite",
+        "tictactoe": "Nullen und Kreuze",
+        "paddle": "Paddle Spiel",
+        "settings": "Einstellungen",
+        "title": "Willst du ein Spiel spielen?",
+        "rstBtn": "Reset Spiel",
+        "yourScore": "Deine Punktzahl: ",
+        "hghScore": "Die beste Punktzahl: ",
+        "resetPg": "Reset Spiel",
+        "fullScr": "Vollbildmodus",
+        "how": "Wie darf mann spielen:",
+        "manual": "Bewege den Mauszeiger über den Tafel und steuere das Paddel damit. So stellen Sie die höchste Punktzahl ein: Lassen Sie den Ball abprallen, um die letzte Punktzahl zu schlagen.",
+        "lang": "Wählt die Sprache:",
+        "speed": "Wählt die Geschwindigkeit:",
+        "easySpeed": "Schwächling",
+        "mediumSpeed": "Ein bisschen schwerer",
+        "fastSpeed": "Verrückt"
     }
 }

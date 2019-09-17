@@ -5,19 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #505050;
-}
-
-.nav {
-  justify-content: center;
-}
-
-.nav-link {
-  color: pink;
-}
-
-.nav-link:hover {
-  color: black;
+  background: black;
 }
 
 code {
