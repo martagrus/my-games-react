@@ -15,7 +15,8 @@ class TicTacToe extends React.Component {
                 '', '', '',
                 '', '', '',
             ],
-            gameEnabled: true
+            gameEnabled: true,
+            info: null
         }
     };
 
@@ -105,14 +106,24 @@ class TicTacToe extends React.Component {
         let {board} = this.state;
         board[index] = 'o';
     
+        if (this.checkGameStatus(this.selectedPlayer)) {
+            this.info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
+        } else {
+            this.info = <h1>There is no winner</h1>
+        }
+
+        if (this.state.board[index] !== '') { 
+            this.info = <h1>This one is taken!</h1>; 
+        }
+
         this.setState({
+            info: this.info,
             turn: this.state.turn + 1,
-            board
+            board,
             }, this.computerTurn)
     
         this.checkGameStatus('o');
     }
-
 
     resetGameBoard() {
         this.setState({
@@ -153,15 +164,15 @@ class TicTacToe extends React.Component {
     render(){
         let info;
 
-        if (this.selectedPlayer) {
-            info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
-        } else {
-            info = <h1>There is no winner</h1>
-        }
+        // if (this.checkGameStatus(this.selectedPlayer)) {
+        //     info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
+        // } else {
+        //     info = <h1>There is no winner</h1>
+        // }
 
-        if (this.state.board[this.index] !== '') { 
-            info = <h1>This one is taken!</h1>; 
-        }
+        // if (this.onFieldClick(index)) { 
+        //     info = <h1>This one is taken!</h1>; 
+        // }
 
         return (
             <div className="game-container background-ttt">
