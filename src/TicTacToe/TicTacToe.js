@@ -99,7 +99,7 @@ class TicTacToe extends React.Component {
 
     onFieldClick(index) {
         if (!this.state.gameEnabled) { return };
-        if (this.state.board[index] !== '') { alert('This one is taken!'); return };
+        // if (this.state.board[index] !== '') { alert('This one is taken!'); return };
         
     
         let {board} = this.state;
@@ -135,11 +135,11 @@ class TicTacToe extends React.Component {
           return;
         }
     
-        if (selectedPlayer) {
-            alert(`Congrats, the winner is: ${selectedPlayer}`);
-        } else {
-            alert('There is no winner')
-        }
+        // if (selectedPlayer) {
+        //     alert(`Congrats, the winner is: ${selectedPlayer}`);
+        // } else {
+        //     alert('There is no winner')
+        // }
     }
     
     checkIfFieldIsNotEmpty(field) {
@@ -151,22 +151,22 @@ class TicTacToe extends React.Component {
     }    
 
     render(){
-        // let info;
+        let info;
 
-        // if (this.selectedPlayer) {
-        //     info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
-        // } else {
-        //     info = <h1>There is no winner</h1>
-        // }
+        if (this.selectedPlayer) {
+            info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
+        } else {
+            info = <h1>There is no winner</h1>
+        }
 
-        // if (this.state.board[this.index] !== '') { 
-        //     info = <h1>This one is taken!</h1>; 
-        //     return }
+        if (this.state.board[this.index] !== '') { 
+            info = <h1>This one is taken!</h1>; 
+        }
 
         return (
             <div className="game-container background-ttt">
 
-                {/* {info} */}
+                {info}
 
                 <div className="game-board">
                     { this.state.board.map((field, key) => {
