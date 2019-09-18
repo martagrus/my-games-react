@@ -5,13 +5,15 @@
   justify-content: space-around;
   background-image: url(./pictures/gold.jpg);
   background-size: cover;
-  padding: 0.5%;
+  padding: 0.2%;
    
 }
 
 .nav-item {
   color: black;
-  font-weight: bold;
+  font-family: 'las_enter_personal_use_onlyRg';
+  font-size: 30px;
+  font-weight: bolder;
 }
 
 .nav-item:hover {

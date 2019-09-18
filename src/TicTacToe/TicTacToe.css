@@ -55,7 +55,9 @@
     background-image: url(../pictures/lights.php);
     background-size: cover;
     border: 2px solid gold;
-    color: black;
+    color: #0000cd;
+    font-family: 'neon_tubes_2regular';
+    font-weight: bolder;
 }
 
 .btn:hover {

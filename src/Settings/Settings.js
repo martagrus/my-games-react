@@ -4,9 +4,14 @@ import language from '../language.json';
 import { EventEmitter } from '../EventEmitter';
 
 class Settings extends React.Component {
-    setLang(lang) {
-    localStorage.setItem('language', lang);
-    EventEmitter.dispatch('languageChange', true)
+    setLang(language) {
+        localStorage.setItem('language', language);
+        EventEmitter.dispatch('languageChange', true)
+    }
+
+    setSpeed(speed) {
+        localStorage.setItem('speed', speed);
+        EventEmitter.dispatch('speedChange', true)
     }
     
     
@@ -22,13 +27,13 @@ render(){
             <div className='speed'>
                 <h5>{language[localStorage.getItem('language')].speed}</h5>
                 <div>
-                <input type="radio" name="speed" value="easy" className='radioBtn'/>{language[localStorage.getItem('language')].easySpeed}
+                <input type="radio" name="speed" value="easy" className='radioBtn' onClick={this.setSpeed(this, 'easy')}/>{language[localStorage.getItem('language')].easySpeed}
                 </div>
                 <div>
-                <input type="radio" name="speed" value="medium" className='radioBtn'/>{language[localStorage.getItem('language')].mediumSpeed}
+                <input type="radio" name="speed" value="medium" className='radioBtn' onClick={this.setSpeed(this, 'medium')}/>{language[localStorage.getItem('language')].mediumSpeed}
                 </div>
                 <div>
-                <input type="radio" name="speed" value="hard" className='radioBtn'/>{language[localStorage.getItem('language')].fastSpeed}
+                <input type="radio" name="speed" value="hard" className='radioBtn' onClick={this.setSpeed(this, 'hard')}/>{language[localStorage.getItem('language')].fastSpeed}
                 </div>
             </div>
         </div>

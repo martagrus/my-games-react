@@ -83,7 +83,7 @@ class TicTacToe extends React.Component {
         let computerFieldSelected = _getRandomInt();
     
         if (board[computerFieldSelected] === '') {
-          board[computerFieldSelected] = 'x'
+          board[computerFieldSelected] = 'X'
         } else if (this.state.gameEnabled && this.state.board.indexOf('') >= 0) {
           this.computerTurn();
           return;
@@ -94,7 +94,7 @@ class TicTacToe extends React.Component {
           board
         })
     
-        this.checkGameStatus('x');
+        this.checkGameStatus('X');
     }    
 
     onFieldClick(index) {
@@ -103,16 +103,16 @@ class TicTacToe extends React.Component {
         
     
         let {board} = this.state;
-        board[index] = 'o';
+        board[index] = 'O';
     
         this.setState({
             turn: this.state.turn + 1,
-            board
+            board,
+            index: this.state.board[index]
             }, this.computerTurn)
     
-        this.checkGameStatus('o');
+        this.checkGameStatus('O');
     }
-
 
     resetGameBoard() {
         this.setState({
@@ -129,16 +129,11 @@ class TicTacToe extends React.Component {
     endGame(selectedPlayer) {
         this.setState({
           gameEnabled: false,
+          winner: selectedPlayer,
         })
     
         if (!this.state.gameEnabled) {
           return;
-        }
-    
-        if (selectedPlayer) {
-            alert(`Congrats, the winner is: ${selectedPlayer}`);
-        } else {
-            alert('There is no winner')
         }
     }
     
@@ -151,28 +146,32 @@ class TicTacToe extends React.Component {
     }    
 
     render(){
-        // let info;
+        let info;
 
-        // if (this.selectedPlayer) {
-        //     info = <h1>Congrats, the winner is: ${this.selectedPlayer}</h1>;
-        // } else {
-        //     info = <h1>There is no winner</h1>
-        // }
+        if (!this.state.gameEnabled) {
+            if (this.state.winner) {
+                info = <p>Congrats, the winner is: {this.state.winner}</p>;
+            } else {
+                info = <p>There is no winner</p>
+            }
+        }
 
-        // if (this.state.board[this.index] !== '') { 
-        //     info = <h1>This one is taken!</h1>; 
-        //     return }
+        if (this.state.onFieldClick) {
+            // if (!this.state.gameEnabled) { return };
+            if (this.state.board[this.index] !== '') { 
+                info = <h1>This one is taken!</h1> };
+        }
 
         return (
             <div className="game-container background-ttt">
 
-                {/* {info} */}
+                {info}
 
                 <div className="game-board">
                     { this.state.board.map((field, key) => {
                         return (
                             <div className="game-board--field" key={key} onClick={this.onFieldClick.bind(this, key)}>
-                                <div className="game-board--field-content">{field === 'x' ? <img src={eks} alt="X" /> :  field === 'o' ?<img src={o} alt="O" /> : null}</div>
+                                <div className="game-board--field-content">{field === 'X' ? <img src={eks} alt="X" /> :  field === 'O' ?<img src={o} alt="O" /> : null}</div>
                             </div>
                         )
                     }) }

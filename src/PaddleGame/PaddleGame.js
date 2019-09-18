@@ -1,6 +1,7 @@
 import React from 'react';
 import './PaddleGame.css';
 import language from '../language.json';
+import { EventEmitter } from '../EventEmitter';
 
 class PaddleGame extends React.Component {
   constructor() {
@@ -27,18 +28,37 @@ class PaddleGame extends React.Component {
       isFullScreen: false
     }
 
-    //nie dziala
-    if (localStorage.getItem('highScore') > 10 && localStorage.getItem('highScore') < 20) {
-      this.game.gameSpeed = 500
-    }
-
-    if (localStorage.getItem('highScore') > 20) {
-      this.game.gameSpeed = 250
-    }
-
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
+
+    let speed = {
+      'easy': 800,
+      'medium': 500,
+      'hard': 250
+    }
+
+    if (!localStorage.getItem('speed')) {
+      this.game.gameSpeed = 'easy'
+    }
+
+    if (localStorage.getItem('highScore') > 10 && localStorage.getItem('highScore') < 20) {
+      this.game.gameSpeed = 'medium'
+    }
+    
+    if (localStorage.getItem('highScore') > 20) {
+      this.game.gameSpeed = 'hard'
+    }
+
+    EventEmitter.subscribe('speedChange', (event) => {
+      this.setState({
+        speed
+      })
+    })
   }
+
+    setSpeed(speed) {
+      localStorage.setItem('speed', speed)
+    }
 
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;

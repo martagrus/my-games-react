@@ -23,13 +23,17 @@
 }
 
 .scoreBoard {
-    font-weight: bold;
-    color: black;
+    font-family: 'neon_tubes_2regular';
+    color: magenta;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     border: 4px solid gold;
     padding: 2%;
+}
+
+h2 {
+    font-weight: bolder;
 }
 
 span {
