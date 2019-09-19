@@ -15,16 +15,16 @@ code {
 
 @font-face {
   font-family: 'neon_tubes_2regular';
-  src: url('./assets/neontubes/neontubes2-webfont.woff2') format('woff2'),
-       url('./assets/neontubes/neontubes2-webfont.woff') format('woff');
+  src: url('./assets/neontubes2-webfont.woff2') format('woff2'),
+       url('./assets/neontubes2-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'las_enter_personal_use_onlyRg';
-  src: url('./assets/webfontkit-20190918-053152/lasenter_personaluseonly-webfont.woff2') format('woff2'),
-       url('./assets/webfontkit-20190918-053152/lasenter_personaluseonly-webfont.woff') format('woff');
+  src: url('./assets/lasenter_personaluseonly-webfont.woff2') format('woff2'),
+       url('./assets/lasenter_personaluseonly-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }

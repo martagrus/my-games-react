@@ -1,7 +1,7 @@
 import React from 'react';
 import './TicTacToe.css';
-import eks from '../pictures/x.jpg';
-import o from '../pictures/o.jpg';
+import eks from '../assets/pictures/x.jpg';
+import o from '../assets/pictures/o.jpg';
 import language from '../language.json';
 
 class TicTacToe extends React.Component {
@@ -99,16 +99,19 @@ class TicTacToe extends React.Component {
 
     onFieldClick(index) {
         if (!this.state.gameEnabled) { return };
-        if (this.state.board[index] !== '') { alert('This one is taken!'); return };
+        if (this.state.board[index] !== '') {
+            this.setState({error: <p className="error">{language[localStorage.getItem('language')].taken}</p>})
+        } else { 
+            this.setState({error: false})
+        }
         
-    
         let {board} = this.state;
         board[index] = 'O';
     
         this.setState({
             turn: this.state.turn + 1,
             board,
-            index: this.state.board[index]
+            index: this.state.board[index],
             }, this.computerTurn)
     
         this.checkGameStatus('O');
@@ -122,7 +125,8 @@ class TicTacToe extends React.Component {
                 '', '', '',
             ],
             turn: 0,
-            gameEnabled: true
+            gameEnabled: true,
+            error: false
         })
     }
 
@@ -139,10 +143,10 @@ class TicTacToe extends React.Component {
     
     checkIfFieldIsNotEmpty(field) {
         if (field.length > 0) {
-          return 'game-board--field game-board--field--disabled';
+          return 'game-board--field game-board--field--disabled'
         } else {
           return 'game-board--field'
-        }
+        }        
     }    
 
     render(){
@@ -150,22 +154,19 @@ class TicTacToe extends React.Component {
 
         if (!this.state.gameEnabled) {
             if (this.state.winner) {
-                info = <p>Congrats, the winner is: {this.state.winner}</p>;
+                info = <p>{language[localStorage.getItem('language')].winner} {this.state.winner}</p>;
             } else {
-                info = <p>There is no winner</p>
+                info = <p>{language[localStorage.getItem('language')].noWinner}</p>
             }
         }
 
-        if (this.state.onFieldClick) {
-            // if (!this.state.gameEnabled) { return };
-            if (this.state.board[this.index] !== '') { 
-                info = <h1>This one is taken!</h1> };
-        }
+        const {error} = this.state;
 
         return (
             <div className="game-container background-ttt">
 
                 {info}
+                {error ? <div className="error"> {error} </div> : ''}
 
                 <div className="game-board">
                     { this.state.board.map((field, key) => {

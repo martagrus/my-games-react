@@ -28,6 +28,14 @@ class PaddleGame extends React.Component {
       isFullScreen: false
     }
 
+    if (localStorage.getItem('highScore') > 5 && localStorage.getItem('highScore') < 10) {
+      this.game.gameSpeed = 500
+    }
+
+    if (localStorage.getItem('highScore') > 10) {
+      this.game.gameSpeed = 250
+    }
+
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
 
@@ -37,28 +45,22 @@ class PaddleGame extends React.Component {
       'hard': 250
     }
 
-    if (!localStorage.getItem('speed')) {
-      this.game.gameSpeed = 'easy'
-    }
-
-    if (localStorage.getItem('highScore') > 10 && localStorage.getItem('highScore') < 20) {
-      this.game.gameSpeed = 'medium'
-    }
-    
-    if (localStorage.getItem('highScore') > 20) {
-      this.game.gameSpeed = 'hard'
+    if (localStorage.getItem('speed') === 'easy') {
+      this.setSpeed(this, 'easy')
+    } else if (localStorage.getItem('speed') === 'medium') {
+      this.setSpeed(this, 'medium')
+    } else if (localStorage.getItem('speed') === 'hard') {
+      this.setSpeed(this, 'hard')
     }
 
     EventEmitter.subscribe('speedChange', (event) => {
-      this.setState({
-        speed
-      })
+      this.setState(speed)
     })
-  }
+}
 
-    setSpeed(speed) {
-      localStorage.setItem('speed', speed)
-    }
+  setSpeed(speed) {
+    localStorage.setItem('speed', speed);
+  }
 
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;

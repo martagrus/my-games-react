@@ -1,5 +1,5 @@
 .background-pg {
-    background-image: url('../pictures/tennis.jpg');
+    background-image: url('../assets/pictures/tennis.jpg');
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -13,13 +13,6 @@
 
 .flex>div:last-child {
     flex: 0 1 100%;
-}
-
-.manual {
-    margin-top: 2%;
-    color: black;
-    font-weight: bold;
-    border: 4px solid gold;
 }
 
 .scoreBoard {
@@ -66,4 +59,16 @@ span {
 .btn-pg {
     font-weight: bold;
     width: 15%;
+}
+
+.manual {
+    margin-top: 2%;
+    color: #0000cd;
+    font-family: 'neon_tubes_2regular';
+    border: 4px solid gold;
+}
+
+h6 {
+    font-weight: bolder;
+    font-size: 20px;
 }
