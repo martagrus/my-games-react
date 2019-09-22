@@ -130,7 +130,7 @@ class PaddleGame extends React.Component {
   }
   
   updateAll() {
-    this.game.gameSpeed = this.game.gameSpeed - 1;
+    this.game.gameSpeed = this.game.gameSpeed;
     this.printElements();
     this.updateDirection();
   }
