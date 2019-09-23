@@ -28,13 +28,13 @@ class PaddleGame extends React.Component {
       isFullScreen: false
     }
 
-    if (localStorage.getItem('highScore') > 5 && localStorage.getItem('highScore') < 10) {
-      this.game.gameSpeed = 500
-    }
+    // if (localStorage.getItem('highScore') > 5 && localStorage.getItem('highScore') < 10) {
+    //   this.game.gameSpeed = 500
+    // }
 
-    if (localStorage.getItem('highScore') > 10) {
-      this.game.gameSpeed = 250
-    }
+    // if (localStorage.getItem('highScore') > 10) {
+    //   this.game.gameSpeed = 250
+    // }
 
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
@@ -45,21 +45,15 @@ class PaddleGame extends React.Component {
       'hard': 250
     }
 
-    if (localStorage.getItem('speed') === 'easy') {
-      this.setSpeed(this, 'easy')
-    } else if (localStorage.getItem('speed') === 'medium') {
-      this.setSpeed(this, 'medium')
-    } else if (localStorage.getItem('speed') === 'hard') {
-      this.setSpeed(this, 'hard')
-    }
-
     EventEmitter.subscribe('speedChange', (event) => {
       this.setState(speed)
     })
 }
 
-  setSpeed(speed) {
-    localStorage.setItem('speed', speed);
+  setSpeed() {
+    if (localStorage.getItem('speed') !== '') {
+      this.setSpeed(localStorage.getItem('speed'))
+    } 
   }
 
   componentDidMount() {
@@ -165,7 +159,6 @@ class PaddleGame extends React.Component {
     this.setState({bounces: 0})
   }
 
-  //nie dziala
   startStopGame() {
     if (!this.state.gameRefreshInterval) {
       this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
