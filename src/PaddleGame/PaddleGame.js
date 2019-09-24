@@ -1,7 +1,6 @@
 import React from 'react';
 import './PaddleGame.css';
 import language from '../language.json';
-import { EventEmitter } from '../EventEmitter';
 
 class PaddleGame extends React.Component {
   constructor() {
@@ -28,33 +27,24 @@ class PaddleGame extends React.Component {
       isFullScreen: false
     }
 
-    // if (localStorage.getItem('highScore') > 5 && localStorage.getItem('highScore') < 10) {
-    //   this.game.gameSpeed = 500
-    // }
+    if (localStorage.getItem('highScore') > 5 && localStorage.getItem('highScore') < 10) {
+      this.game.gameSpeed = 500;
+    }
 
-    // if (localStorage.getItem('highScore') > 10) {
-    //   this.game.gameSpeed = 250
-    // }
+    if (localStorage.getItem('highScore') > 10) {
+      this.game.gameSpeed = 250;
+    }
 
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
-
-    let speed = {
-      'easy': 800,
-      'medium': 500,
-      'hard': 250
-    }
-
-    EventEmitter.subscribe('speedChange', (event) => {
-      this.setState(speed)
-    })
+    
 }
 
-  setSpeed() {
-    if (localStorage.getItem('speed') !== '') {
-      this.setSpeed(localStorage.getItem('speed'))
-    } 
+setSpeed() {
+  if (localStorage.getItem('speed') !== '') {
+    this.game.gameSpeed = localStorage.getItem('speed');
   }
+}
 
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;
@@ -161,6 +151,7 @@ class PaddleGame extends React.Component {
 
   startStopGame() {
     if (!this.state.gameRefreshInterval) {
+      this.setSpeed();
       this.setState({gameRefreshInterval: setInterval(this.updateAll, this.game.gameSpeed/30)});
     } else {
       clearInterval(this.state.gameRefreshInterval);

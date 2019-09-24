@@ -2,7 +2,7 @@
     background-image: url('../assets/pictures/board.php');
     background-size: cover;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 .game-container {
@@ -16,7 +16,7 @@
 
 .error {
     font-family: 'neon_tubes_2regular';
-    font-size: 50px;
+    font-size: 25px;
     font-weight: bolder;
     color: red;
 }
@@ -63,10 +63,39 @@
     background-size: cover;
     border: 2px solid gold;
     color: #0000cd;
+    font-size: 10px;
     font-family: 'neon_tubes_2regular';
     font-weight: bolder;
 }
 
 .btn:hover {
     background-color: gold;
+}
+
+@media (min-width: 768px) {
+    .btn {
+        font-size: 20px;
+    }
+    
+    p {
+        font-size: 40px;
+    }
+    
+    .error {
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 996px) {
+    .background-ttt {
+        height: 100%;
+    }
+    
+    p {
+        font-size: 70px;
+    }
+
+    .error {
+        font-size: 50px;
+    }
 }

@@ -26,6 +26,7 @@
 }
 
 h2 {
+    font-size: 13px;
     font-weight: bolder;
 }
 
@@ -58,7 +59,7 @@ span {
 
 .btn-pg {
     font-weight: bold;
-    width: 17%;
+    width: 33%;
 }
 
 .manual {
@@ -68,7 +69,37 @@ span {
     border: 4px solid gold;
 }
 
-h6 {
+.manual h5 {
+    font-size: 25px;
+}
+
+.manual h6 {
     font-weight: bolder;
-    font-size: 20px;
+    font-size: 15px;
+}
+
+@media (min-width: 768px) {
+    h2 {
+        font-size: 30px;
+    }
+
+    .manual h5 {
+        font-weight: bolder;
+        font-size: 30px;
+    }
+
+    .manual h6 {
+        font-weight: bolder;
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 996px) {
+    h2 {
+        font-size: 40px;
+    }
+    
+    .btn-pg {
+        width: 17%;
+    }
 }

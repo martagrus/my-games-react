@@ -6,17 +6,28 @@
   background-image: url(./assets/pictures/gold.jpg);
   background-size: cover;
   padding: 0.2%;
-   
 }
 
 .nav-item {
   color: black;
   font-family: 'las_enter_personal_use_onlyRg';
-  font-size: 30px;
+  font-size: 15px;
   font-weight: bolder;
 }
 
 .nav-item:hover {
   color: magenta;
   text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .nav-item {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 996px) {
+  .nav-item {
+    font-size: 30px;
+  }
 }

@@ -27,13 +27,13 @@ render(){
             <div className='speed'>
                 <h5>{language[localStorage.getItem('language')].speed}</h5>
                 <div>
-                <input type="radio" name="speed" value="easy" className='radioBtn' onClick={this.setSpeed.bind(this, 'easy')}/>{language[localStorage.getItem('language')].easySpeed}
+                <input type="radio" name="speed" value="easy" className='radioBtn' onClick={this.setSpeed.bind(this, 800)}/>{language[localStorage.getItem('language')].easySpeed}
                 </div>
                 <div>
-                <input type="radio" name="speed" value="medium" className='radioBtn' onClick={this.setSpeed.bind(this, 'medium')}/>{language[localStorage.getItem('language')].mediumSpeed}
+                <input type="radio" name="speed" value="medium" className='radioBtn' onClick={this.setSpeed.bind(this, 500)}/>{language[localStorage.getItem('language')].mediumSpeed}
                 </div>
                 <div>
-                <input type="radio" name="speed" value="hard" className='radioBtn' onClick={this.setSpeed.bind(this, 'hard')}/>{language[localStorage.getItem('language')].fastSpeed}
+                <input type="radio" name="speed" value="hard" className='radioBtn' onClick={this.setSpeed.bind(this, 250)}/>{language[localStorage.getItem('language')].fastSpeed}
                 </div>
             </div>
         </div>
