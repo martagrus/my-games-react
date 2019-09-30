@@ -21,6 +21,13 @@
     color: red;
 }
 
+.winnerInfo {
+    font-family: 'neon_tubes_2regular';
+    font-size: 45px;
+    font-weight: bolder;
+    color: magenta;
+}
+
 .game-board {
     width: 50%;
     padding: 0%;

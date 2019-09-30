@@ -154,9 +154,9 @@ class TicTacToe extends React.Component {
 
         if (!this.state.gameEnabled) {
             if (this.state.winner) {
-                info = <p>{language[localStorage.getItem('language')].winner} {this.state.winner}</p>;
+                info = <p className='winnerInfo'>{language[localStorage.getItem('language')].winner} {this.state.winner}</p>;
             } else {
-                info = <p>{language[localStorage.getItem('language')].noWinner}</p>
+                info = <p className='winnerInfo'>{language[localStorage.getItem('language')].noWinner}</p>
             }
         }
 
