@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/my-games/static/css/main.2f7fada5.chunk.css",
-    "main.js": "/my-games/static/js/main.4b673a8d.chunk.js",
-    "main.js.map": "/my-games/static/js/main.4b673a8d.chunk.js.map",
-    "runtime~main.js": "/my-games/static/js/runtime~main.c903e4b9.js",
-    "runtime~main.js.map": "/my-games/static/js/runtime~main.c903e4b9.js.map",
-    "static/js/2.d2eb95d0.chunk.js": "/my-games/static/js/2.d2eb95d0.chunk.js",
-    "static/js/2.d2eb95d0.chunk.js.map": "/my-games/static/js/2.d2eb95d0.chunk.js.map",
-    "index.html": "/my-games/index.html",
-    "precache-manifest.0aae8f8c621080f8bf9977a339eaa56a.js": "/my-games/precache-manifest.0aae8f8c621080f8bf9977a339eaa56a.js",
-    "service-worker.js": "/my-games/service-worker.js",
-    "static/css/main.2f7fada5.chunk.css.map": "/my-games/static/css/main.2f7fada5.chunk.css.map",
-    "static/media/TicTacToe.css": "/my-games/static/media/lights.2f3c2c4f.php",
-    "static/media/index.css": "/my-games/static/media/neontubes2-webfont.e35f7a5e.woff",
-    "static/media/Settings.css": "/my-games/static/media/lv.afa0d870.jpg",
-    "static/media/o.jpg": "/my-games/static/media/o.a59aafee.jpg",
-    "static/media/PaddleGame.css": "/my-games/static/media/tennis.4a41fc69.jpg",
-    "static/media/x.jpg": "/my-games/static/media/x.86a48683.jpg"
+    "main.css": "/my-games-react/static/css/main.487f6777.chunk.css",
+    "main.js": "/my-games-react/static/js/main.6e6b94ca.chunk.js",
+    "main.js.map": "/my-games-react/static/js/main.6e6b94ca.chunk.js.map",
+    "runtime~main.js": "/my-games-react/static/js/runtime~main.59a44239.js",
+    "runtime~main.js.map": "/my-games-react/static/js/runtime~main.59a44239.js.map",
+    "static/js/2.d2eb95d0.chunk.js": "/my-games-react/static/js/2.d2eb95d0.chunk.js",
+    "static/js/2.d2eb95d0.chunk.js.map": "/my-games-react/static/js/2.d2eb95d0.chunk.js.map",
+    "index.html": "/my-games-react/index.html",
+    "precache-manifest.a8e5d5f31d6dd7c65302f93270c79073.js": "/my-games-react/precache-manifest.a8e5d5f31d6dd7c65302f93270c79073.js",
+    "service-worker.js": "/my-games-react/service-worker.js",
+    "static/css/main.487f6777.chunk.css.map": "/my-games-react/static/css/main.487f6777.chunk.css.map",
+    "static/media/TicTacToe.css": "/my-games-react/static/media/lights.2f3c2c4f.php",
+    "static/media/index.css": "/my-games-react/static/media/neontubes2-webfont.e35f7a5e.woff",
+    "static/media/Settings.css": "/my-games-react/static/media/lv.afa0d870.jpg",
+    "static/media/o.jpg": "/my-games-react/static/media/o.a59aafee.jpg",
+    "static/media/PaddleGame.css": "/my-games-react/static/media/tennis.4a41fc69.jpg",
+    "static/media/x.jpg": "/my-games-react/static/media/x.86a48683.jpg"
   }
 }
