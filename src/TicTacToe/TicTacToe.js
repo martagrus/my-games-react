@@ -20,7 +20,6 @@ class TicTacToe extends React.Component {
     };
 
     checkGameStatus(selectedPlayer) {
-
         if (this.state.gameEnabled) {
             if (this.sameAcrossRight(selectedPlayer) || this.sameAcrossLeft(selectedPlayer) || this.sameVertical(selectedPlayer) || this.sameHorizontal(selectedPlayer)) {
                 this.endGame(selectedPlayer);
@@ -100,7 +99,7 @@ class TicTacToe extends React.Component {
     onFieldClick(index) {
         if (!this.state.gameEnabled) { return };
         if (this.state.board[index] !== '') {
-            this.setState({error: <p className="error">{language[localStorage.getItem('language')].taken}</p>})
+            this.setState({error:<p className="error">{language[localStorage.getItem('language')].taken}</p>}); return
         } else { 
             this.setState({error: false})
         }

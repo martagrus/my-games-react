@@ -38,13 +38,13 @@ class PaddleGame extends React.Component {
     this.updateAll = this.updateAll.bind(this);
     this.updateMousePosition = this.updateMousePosition.bind(this);
     
-}
-
-setSpeed() {
-  if (localStorage.getItem('speed') !== '') {
-    this.game.gameSpeed = localStorage.getItem('speed');
   }
-}
+
+  setSpeed() {
+    if (localStorage.getItem('speed') !== '') {
+      this.game.gameSpeed = localStorage.getItem('speed');
+    }
+  }
 
   componentDidMount() {
     this.game.gameBoard = this.refs.canvas;

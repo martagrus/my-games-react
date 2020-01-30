@@ -29,7 +29,7 @@
 }
 
 .game-board {
-    width: 50%;
+    width: 80%;
     padding: 0%;
     margin: 5% 25% 2% 25%;
     display: flex;
@@ -68,6 +68,7 @@
 .btn {
     background-image: url(../assets/pictures/lights.php);
     background-size: cover;
+    margin-bottom: 2%;
     border: 2px solid gold;
     color: #0000cd;
     font-size: 10px;
@@ -80,6 +81,10 @@
 }
 
 @media (min-width: 768px) {
+    .game-board {
+        width: 50%;
+    }
+
     .btn {
         font-size: 20px;
     }
@@ -94,6 +99,10 @@
 }
 
 @media (min-width: 996px) {
+    .game-board {
+        width: 35%;
+    }
+
     .background-ttt {
         height: 100%;
     }
